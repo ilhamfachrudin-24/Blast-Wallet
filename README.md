@@ -48,3 +48,101 @@ Building a secure gateway between users and the decentralized ecosystem through 
 
 
 ## 🏗 Architecture
+
+User
+
+↓
+
+Blast Wallet App
+
+↓
+
+Wallet Core Engine
+
+↓
+
+Blockchain Layer
+
+↓
+
+AI Security Engine
+
+↓
+
+Web3 Ecosystem
+
+## 🛠 Tech Stack
+
+
+Frontend:
+
+- React Native
+- TypeScript
+- NativeWind
+
+
+Backend:
+
+- Python
+- FastAPI
+- PostgreSQL
+
+
+Blockchain:
+
+- Solana
+- Ethereum
+- Rust
+- Solidity
+
+
+AI:
+
+- LLM
+- AI Agents
+- Security Analysis
+
+
+
+## 📌 Roadmap
+
+
+### Phase 1 — Wallet Core
+
+- [ ] Wallet creation
+- [ ] Seed phrase system
+- [ ] Private key encryption
+- [ ] Local wallet storage
+
+
+### Phase 2 — Blockchain Integration
+
+- [ ] Solana support
+- [ ] Ethereum support
+- [ ] Token balance
+- [ ] Transaction signing
+
+
+### Phase 3 — Web3 Features
+
+- [ ] WalletConnect
+- [ ] dApp browser
+- [ ] Swap integration
+
+
+### Phase 4 — AI Wallet Intelligence
+
+- [ ] AI Security Scanner
+- [ ] Risk analysis
+- [ ] Portfolio assistant
+
+
+
+## 📄 License
+
+MIT License
+
+
+---
+
+Built with ⚡ by Ahmad Ilham
