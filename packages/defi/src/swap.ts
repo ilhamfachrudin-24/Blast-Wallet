@@ -1,23 +1,15 @@
-export interface SwapRequest {
+export interface SwapQuote {
 
 
-fromToken:string;
+from:string;
 
-toToken:string;
+to:string;
 
 amount:number;
 
+estimated:number;
 
-}
-
-
-
-export interface SwapResult {
-
-
-success:boolean;
-
-txHash:string;
+priceImpact:number;
 
 
 }
@@ -26,22 +18,37 @@ txHash:string;
 
 
 
-export function executeSwap(
+export function getSwapQuote(
 
-request:SwapRequest
+from:string,
 
-):SwapResult{
+to:string,
+
+amount:number
+
+):SwapQuote{
 
 
 return {
 
 
-success:true,
+from,
 
 
-txHash:
+to,
 
-"swap_transaction_hash"
+
+amount,
+
+
+estimated:
+
+amount * 0.98,
+
+
+priceImpact:
+
+0.5
 
 
 };
