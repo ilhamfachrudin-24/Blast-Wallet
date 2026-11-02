@@ -27,3 +27,7 @@ export * from "./history";
 export * from "./explorer";
 
 export * from "./networkManager";
+
+export * from "./gas";
+
+export * from "./feeOptimizer";
