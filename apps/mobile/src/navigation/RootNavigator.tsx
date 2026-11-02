@@ -12,14 +12,17 @@ import RecoveryPhraseScreen from "../screens/RecoveryPhraseScreen";
 import ImportWalletScreen from "../screens/ImportWalletScreen";
 import WalletDashboardScreen from "../screens/WalletDashboardScreen";
 import AssetDetailScreen from "../screens/AssetDetailScreen";
+import SendTransactionScreen from "../screens/SendTransactionScreen";
 
 
 const Stack=createNativeStackNavigator();
 
 
+
 export default function RootNavigator(){
 
-return(
+
+return (
 
 <Stack.Navigator
 
@@ -69,6 +72,12 @@ component={WalletDashboardScreen}
 <Stack.Screen
 name="AssetDetail"
 component={AssetDetailScreen}
+/>
+
+
+<Stack.Screen
+name="SendTransaction"
+component={SendTransactionScreen}
 />
 
 
