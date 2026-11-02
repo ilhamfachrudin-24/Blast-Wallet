@@ -1,72 +1,46 @@
 import {
 
-loadWallet
+activeWallet
 
-} from "@blast-wallet/wallet-core";
-
-
-import {
-
-getSecurityStatus
-
-} from "@blast-wallet/wallet-core";
+} from "./walletManagerService";
 
 
 import {
 
-scanTokens,
+analyzePortfolio
 
-calculatePortfolio
-
-} from "@blast-wallet/portfolio";
+} from "./portfolioAIService";
 
 
+import {
 
+getSecurityScore
 
-
-export async function getDashboardData(){
-
-
-const wallet =
-loadWallet();
+} from "./securityService";
 
 
 
-const tokens =
-
-scanTokens(
-
-wallet.address
-
-);
 
 
-
-const portfolio =
-
-await calculatePortfolio(
-
-tokens
-
-);
-
+export function dashboardData(){
 
 
 return {
 
 
-wallet,
+wallet:
+
+activeWallet(),
 
 
-tokens,
+portfolio:
 
-
-portfolio,
+analyzePortfolio([]),
 
 
 security:
 
-getSecurityStatus()
+getSecurityScore()
 
 
 };
