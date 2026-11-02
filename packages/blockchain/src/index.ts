@@ -5,3 +5,5 @@ export * from "./transaction";
 export * from "./solana";
 
 export * from "./ethereum";
+
+export * from "./solanaWallet";
