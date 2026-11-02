@@ -1,48 +1,54 @@
 export interface SignedTransaction {
 
-  hash:string;
 
-  status:string;
+raw:string;
 
-  network:string;
+signature:string;
+
 
 }
 
 
-
-export interface TransactionPayload {
-
-  from:string;
-
-  to:string;
-
-  amount:number;
-
-  asset:string;
-
-}
 
 
 
 export function signTransaction(
-transaction:TransactionPayload,
+
+transaction:any,
+
 privateKey:string
+
 ):SignedTransaction{
+
+
+
+const payload =
+
+JSON.stringify({
+
+transaction,
+
+privateKey
+
+});
+
+
 
 
 return {
 
 
-hash:
-"transaction_hash_generated",
+raw:
+
+Buffer.from(payload)
+
+.toString("base64"),
 
 
-status:
-"signed",
 
+signature:
 
-network:
-transaction.asset
+"local_signature"
 
 
 };
