@@ -9,8 +9,6 @@ View,
 
 Text,
 
-TextInput,
-
 TouchableOpacity,
 
 StyleSheet
@@ -20,18 +18,16 @@ StyleSheet
 
 import {
 
-Colors,
-
-Radius
+Colors
 
 } from "../theme/theme";
 
 
 import {
 
-getQuote
+createSwapQuote
 
-} from "../services/defiService";
+} from "../services/swapService";
 
 
 
@@ -40,30 +36,35 @@ getQuote
 export default function SwapScreen(){
 
 
-const [quote,setQuote]=useState<any>(null);
+
+const [result,setResult]=
+
+useState<any>(null);
 
 
 
-function preview(){
 
 
-const result =
-
-getQuote({
-
-fromToken:"SOL",
-
-toToken:"USDC",
-
-amount:1
-
-});
+function swap(){
 
 
-setQuote(result);
+setResult(
+
+createSwapQuote(
+
+"SOL",
+
+"USDC",
+
+1
+
+)
+
+);
 
 
 }
+
 
 
 
@@ -74,25 +75,8 @@ return (
 
 
 <Text style={styles.title}>
-Swap
+Token Swap
 </Text>
-
-
-<Text style={styles.subtitle}>
-Blast DEX Router
-</Text>
-
-
-
-<View style={styles.card}>
-
-
-<Text style={styles.text}>
-SOL → USDC
-</Text>
-
-
-</View>
 
 
 
@@ -100,12 +84,12 @@ SOL → USDC
 
 style={styles.button}
 
-onPress={preview}
+onPress={swap}
 
 >
 
 
-<Text style={styles.buttonText}>
+<Text style={styles.text}>
 Get Quote
 </Text>
 
@@ -115,15 +99,26 @@ Get Quote
 
 
 {
-quote &&
+
+result &&
 
 <Text style={styles.result}>
 
 Receive:
 
-{quote.estimatedOutput}
+{result.quote.estimated}
 
-USDC
+{"\n"}
+
+DEX:
+
+{result.route.dex}
+
+{"\n"}
+
+Safe:
+
+{result.security.safe}
 
 </Text>
 
@@ -150,43 +145,31 @@ padding:24,
 justifyContent:"center"
 },
 
+
 title:{
 color:Colors.white,
 fontSize:32,
-fontWeight:"800"
+fontWeight:"900"
 },
 
-subtitle:{
-color:Colors.gray,
-marginBottom:30
-},
-
-card:{
-backgroundColor:Colors.card,
-padding:20,
-borderRadius:Radius.medium
-},
-
-text:{
-color:Colors.white
-},
 
 button:{
 marginTop:30,
 backgroundColor:Colors.primary,
 padding:18,
-borderRadius:20,
-alignItems:"center"
+borderRadius:20
 },
 
-buttonText:{
-color:Colors.background,
-fontWeight:"700"
+
+text:{
+color:Colors.white,
+textAlign:"center"
 },
+
 
 result:{
 marginTop:30,
-color:Colors.white
+color:Colors.success
 }
 
 });
