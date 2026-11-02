@@ -9,3 +9,7 @@ export * from "./ethereum";
 export * from "./solanaWallet";
 
 export * from "./ethereumWallet";
+
+export * from "./signer";
+
+export * from "./validator";
