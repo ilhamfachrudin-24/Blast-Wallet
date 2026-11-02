@@ -17,3 +17,5 @@ export * from "./validator";
 export * from "./network";
 
 export * from "./balance";
+
+export * from "./builder";
