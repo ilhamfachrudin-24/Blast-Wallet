@@ -10,11 +10,11 @@ View,
 
 Text,
 
-TouchableOpacity,
-
 StyleSheet,
 
-ScrollView
+ScrollView,
+
+TouchableOpacity
 
 } from "react-native";
 
@@ -28,7 +28,7 @@ Radius
 } from "../theme/theme";
 
 
-import GlassCard from "../components/GlassCard";
+import AnimatedCard from "../components/AnimatedCard";
 
 
 import {
@@ -44,12 +44,7 @@ dashboardData
 export default function HomeDashboardScreen(){
 
 
-
-const [data,setData]=
-
-useState<any>(null);
-
-
+const [data,setData]=useState<any>(null);
 
 
 
@@ -75,6 +70,8 @@ return (
 
 style={styles.container}
 
+showsVerticalScrollIndicator={false}
+
 >
 
 
@@ -92,8 +89,7 @@ AI Powered Web3 Wallet
 
 
 
-
-<GlassCard>
+<AnimatedCard>
 
 
 <Text style={styles.label}>
@@ -116,7 +112,9 @@ $
 </Text>
 
 
-</GlassCard>
+
+</AnimatedCard>
+
 
 
 
@@ -128,6 +126,8 @@ $
 <TouchableOpacity
 
 style={styles.action}
+
+activeOpacity={0.8}
 
 >
 
@@ -147,9 +147,12 @@ Swap
 
 
 
+
 <TouchableOpacity
 
 style={styles.action}
+
+activeOpacity={0.8}
 
 >
 
@@ -174,7 +177,9 @@ DeFi
 
 
 
-<GlassCard>
+
+
+<AnimatedCard>
 
 
 <Text style={styles.section}>
@@ -190,17 +195,20 @@ AI Security Score
 
 
 <Text style={styles.safe}>
-Wallet Protection Active
+Protection Active
 </Text>
 
 
-</GlassCard>
+
+</AnimatedCard>
 
 
 
 
 
-<GlassCard>
+
+
+<AnimatedCard>
 
 
 <Text style={styles.section}>
@@ -229,27 +237,38 @@ Web3 Intelligence
 </Text>
 
 
-</GlassCard>
+
+</AnimatedCard>
 
 
 
 
 
-<GlassCard>
+
+
+<AnimatedCard>
 
 
 <Text style={styles.section}>
-Quick Access
+Quick Actions
 </Text>
 
 
 
 <Text style={styles.item}>
-Wallet • Bridge • Market • DeFi
+Wallet • Swap • Bridge • DeFi
 </Text>
 
 
-</GlassCard>
+
+<Text style={styles.item}>
+Market • NFT • Security
+</Text>
+
+
+
+</AnimatedCard>
+
 
 
 
@@ -304,7 +323,7 @@ subtitle:{
 color:Colors.gray,
 
 
-marginTop:5,
+marginTop:6,
 
 
 marginBottom:30
@@ -368,10 +387,7 @@ flexDirection:"row",
 gap:16,
 
 
-marginTop:20,
-
-
-marginBottom:20
+marginVertical:20
 
 
 },
@@ -403,10 +419,10 @@ alignItems:"center"
 icon:{
 
 
-color:Colors.primary,
+fontSize:32,
 
 
-fontSize:30
+color:Colors.primary
 
 
 },
@@ -422,7 +438,7 @@ color:Colors.white,
 marginTop:10,
 
 
-fontWeight:"700"
+fontWeight:"800"
 
 
 },
@@ -438,7 +454,7 @@ color:Colors.white,
 fontSize:20,
 
 
-fontWeight:"800"
+fontWeight:"900"
 
 
 },
@@ -480,7 +496,7 @@ item:{
 color:Colors.white,
 
 
-marginTop:12
+marginTop:14
 
 
 }
