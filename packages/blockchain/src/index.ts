@@ -13,3 +13,7 @@ export * from "./ethereumWallet";
 export * from "./signer";
 
 export * from "./validator";
+
+export * from "./network";
+
+export * from "./balance";
