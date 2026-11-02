@@ -7,3 +7,7 @@ export * from "./price";
 export * from "./metadata";
 
 export * from "./nft";
+
+export * from "./analytics";
+
+export * from "./allocation";
