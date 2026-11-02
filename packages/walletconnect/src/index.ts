@@ -1,3 +1,3 @@
-export * from "./connector";
+export * from "./session";
 
 export * from "./request";
