@@ -1,4 +1,4 @@
-export interface WalletRequest {
+export interface DAppRequest {
 
 
 method:string;
@@ -10,13 +10,12 @@ params:any;
 
 
 
+export function handleRequest(
 
-
-export function approveRequest(
-
-request:WalletRequest
+request:DAppRequest
 
 ){
+
 
 
 return {
@@ -24,31 +23,11 @@ return {
 
 approved:true,
 
-request
+
+method:request.method,
 
 
-};
-
-
-}
-
-
-
-
-
-export function rejectRequest(
-
-request:WalletRequest
-
-){
-
-
-return {
-
-
-approved:false,
-
-request
+result:"signed"
 
 
 };
