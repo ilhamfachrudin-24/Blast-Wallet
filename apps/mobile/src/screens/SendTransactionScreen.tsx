@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 
 import {
   View,
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  Alert
 } from "react-native";
 
 
@@ -15,8 +16,71 @@ import {
 } from "../theme/theme";
 
 
+import {
+  prepareTransaction
+} from "../services/transactionService";
+
+
 
 export default function SendTransactionScreen(){
+
+
+const [address,setAddress] = useState("");
+
+const [amount,setAmount] = useState("");
+
+
+
+function handleSend(){
+
+
+const result = prepareTransaction({
+
+from:"my_wallet",
+
+to:address,
+
+amount:Number(amount),
+
+asset:"SOL"
+
+});
+
+
+
+if(result.success){
+
+
+Alert.alert(
+
+"Transaction Ready",
+
+"Transaction signed successfully"
+
+);
+
+
+console.log(result);
+
+
+}else{
+
+
+Alert.alert(
+
+"Transaction Failed",
+
+result.message
+
+);
+
+
+}
+
+
+}
+
+
 
 return (
 
@@ -34,6 +98,7 @@ Transfer your crypto securely
 
 
 
+
 <Text style={styles.label}>
 Recipient Address
 </Text>
@@ -47,7 +112,12 @@ placeholder="Wallet address"
 
 placeholderTextColor={Colors.gray}
 
+value={address}
+
+onChangeText={setAddress}
+
 />
+
 
 
 
@@ -66,7 +136,12 @@ placeholderTextColor={Colors.gray}
 
 keyboardType="numeric"
 
+value={amount}
+
+onChangeText={setAmount}
+
 />
+
 
 
 
@@ -92,7 +167,10 @@ Network Fee
 
 style={styles.button}
 
+onPress={handleSend}
+
 >
+
 
 <Text style={styles.buttonText}>
 Review Transaction
@@ -100,6 +178,7 @@ Review Transaction
 
 
 </TouchableOpacity>
+
 
 
 </View>
