@@ -24,7 +24,7 @@ Colors
 
 import {
 
-loadHistory
+transactionHistory
 
 } from "../services/historyService";
 
@@ -33,6 +33,7 @@ loadHistory
 
 
 export default function TransactionHistoryScreen(){
+
 
 
 const [history,setHistory]=
@@ -48,10 +49,9 @@ useEffect(()=>{
 
 setHistory(
 
-loadHistory()
+transactionHistory()
 
 );
-
 
 
 },[]);
@@ -71,13 +71,12 @@ Transaction History
 
 
 
-
 {
 
-history.length === 0 &&
+history.length===0 &&
 
 <Text style={styles.empty}>
-No transactions yet
+No Transactions
 </Text>
 
 }
@@ -99,8 +98,13 @@ style={styles.card}
 >
 
 
-<Text style={styles.hash}>
-{tx.hash}
+<Text style={styles.type}>
+{tx.type}
+</Text>
+
+
+<Text style={styles.amount}>
+{tx.amount} {tx.token}
 </Text>
 
 
@@ -141,14 +145,14 @@ padding:24
 
 title:{
 color:Colors.white,
-fontSize:30,
-fontWeight:"900",
-marginBottom:30
+fontSize:32,
+fontWeight:"900"
 },
 
 
 empty:{
-color:Colors.gray
+color:Colors.gray,
+marginTop:30
 },
 
 
@@ -156,18 +160,25 @@ card:{
 backgroundColor:Colors.card,
 padding:20,
 borderRadius:20,
-marginBottom:15
+marginTop:20
 },
 
 
-hash:{
-color:Colors.white
+type:{
+color:Colors.white,
+fontWeight:"800"
+},
+
+
+amount:{
+color:Colors.success,
+marginTop:10
 },
 
 
 status:{
-marginTop:10,
-color:Colors.success
+color:Colors.gray,
+marginTop:5
 }
 
 });
