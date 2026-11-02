@@ -1,6 +1,6 @@
 import {
 
-validateTransaction,
+buildTransaction,
 
 signTransaction
 
@@ -17,7 +17,7 @@ analyzeTransactionRisk
 
 
 
-export function prepareTransaction(
+export function createWalletTransaction(
 
 data:any
 
@@ -25,43 +25,19 @@ data:any
 
 
 
-const validation =
+const transaction =
 
-validateTransaction(
-
-data.amount,
-
-data.to
-
-);
-
-
-
-if(!validation.valid){
-
-
-return {
-
-
-success:false,
-
-
-message:validation.message
-
-
-};
-
-
-}
+buildTransaction(data);
 
 
 
 
-const guardian =
+
+const security =
 
 analyzeTransactionRisk(
 
-data
+transaction
 
 );
 
@@ -69,21 +45,16 @@ data
 
 
 
-if(!guardian.safe){
+if(!security.safe){
 
 
 return {
 
 
-success:false,
+status:"blocked",
 
 
-message:
-
-guardian.message,
-
-
-risk:guardian
+security
 
 
 };
@@ -99,10 +70,9 @@ const signed =
 
 signTransaction(
 
-data,
+transaction,
 
-
-"wallet_private_key"
+"LOCAL_VAULT_KEY"
 
 );
 
@@ -113,13 +83,13 @@ data,
 return {
 
 
-success:true,
+status:"signed",
 
 
 transaction:signed,
 
 
-risk:guardian
+security
 
 
 };
