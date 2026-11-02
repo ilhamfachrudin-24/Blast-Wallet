@@ -10,72 +10,63 @@ import WelcomeScreen from "../screens/WelcomeScreen";
 import CreateWalletScreen from "../screens/CreateWalletScreen";
 import RecoveryPhraseScreen from "../screens/RecoveryPhraseScreen";
 import ImportWalletScreen from "../screens/ImportWalletScreen";
+import WalletDashboardScreen from "../screens/WalletDashboardScreen";
 
 
 const Stack = createNativeStackNavigator();
 
 
-
 export default function RootNavigator(){
 
-  return (
+return (
 
-    <Stack.Navigator
+<Stack.Navigator
 
-      screenOptions={{
-        headerShown:false
-      }}
+screenOptions={{
+headerShown:false
+}}
 
-    >
-
-
-      <Stack.Screen
-
-        name="Splash"
-
-        component={SplashScreen}
-
-      />
+>
 
 
-      <Stack.Screen
-
-        name="Welcome"
-
-        component={WelcomeScreen}
-
-      />
+<Stack.Screen
+name="Splash"
+component={SplashScreen}
+/>
 
 
-      <Stack.Screen
-
-        name="CreateWallet"
-
-        component={CreateWalletScreen}
-
-      />
+<Stack.Screen
+name="Welcome"
+component={WelcomeScreen}
+/>
 
 
-      <Stack.Screen
-
-        name="RecoveryPhrase"
-
-        component={RecoveryPhraseScreen}
-
-      />
+<Stack.Screen
+name="CreateWallet"
+component={CreateWalletScreen}
+/>
 
 
-      <Stack.Screen
-
-        name="ImportWallet"
-
-        component={ImportWalletScreen}
-
-      />
+<Stack.Screen
+name="RecoveryPhrase"
+component={RecoveryPhraseScreen}
+/>
 
 
-    </Stack.Navigator>
+<Stack.Screen
+name="ImportWallet"
+component={ImportWalletScreen}
+/>
 
-  );
+
+<Stack.Screen
+name="Dashboard"
+component={WalletDashboardScreen}
+/>
+
+
+</Stack.Navigator>
+
+);
 
 }
