@@ -9,9 +9,11 @@ signTransaction
 
 import {
 
-analyzeTransaction
+analyzeTransactionRisk
 
 } from "@blast-wallet/ai-engine";
+
+
 
 
 
@@ -37,38 +39,58 @@ data.to
 
 if(!validation.valid){
 
+
 return {
+
 
 success:false,
 
-message:
-validation.message
+
+message:validation.message
+
 
 };
+
 
 }
 
 
 
 
-const security =
+const guardian =
 
-analyzeTransaction(data);
+analyzeTransactionRisk(
+
+data
+
+);
 
 
 
-if(security.score < 70){
+
+
+if(!guardian.safe){
+
 
 return {
 
+
 success:false,
 
+
 message:
-"Transaction blocked by AI Security"
+
+guardian.message,
+
+
+risk:guardian
+
 
 };
 
+
 }
+
 
 
 
@@ -79,17 +101,26 @@ signTransaction(
 
 data,
 
+
 "wallet_private_key"
 
 );
 
 
 
+
+
 return {
+
 
 success:true,
 
-transaction:signed
+
+transaction:signed,
+
+
+risk:guardian
+
 
 };
 
