@@ -7,13 +7,16 @@ import {
   StyleSheet
 } from "react-native";
 
+
 import {
   Colors,
   Radius
 } from "../theme/theme";
 
 
-export default function CreateWalletScreen({navigation}:any){
+
+export default function CreateWalletScreen({navigation}: any){
+
 
   return (
 
@@ -32,28 +35,32 @@ export default function CreateWalletScreen({navigation}:any){
 
       <Text style={styles.description}>
 
-        Create your secure
+        Generate your secure
         self-custody wallet.
 
         {"\n\n"}
 
-        Your recovery phrase is
-        the only way to access
-        your assets.
+        You will receive a recovery
+        phrase to protect your assets.
 
       </Text>
 
 
-      <View style={styles.warning}>
 
-        <Text style={styles.warningTitle}>
-          ⚠ Security Reminder
+      <View style={styles.infoBox}>
+
+
+        <Text style={styles.infoTitle}>
+          Your wallet, your control
         </Text>
 
-        <Text style={styles.warningText}>
-          Never share your recovery
-          phrase with anyone.
+
+        <Text style={styles.infoText}>
+          Blast Wallet does not store
+          your private keys or recovery
+          phrase.
         </Text>
+
 
       </View>
 
@@ -63,13 +70,16 @@ export default function CreateWalletScreen({navigation}:any){
 
         style={styles.button}
 
-        onPress={()=>navigation.navigate("RecoveryPhrase")}
+        onPress={() =>
+          navigation.navigate("RecoveryPhrase")
+        }
 
       >
 
         <Text style={styles.buttonText}>
-          Continue
+          Generate Wallet
         </Text>
+
 
       </TouchableOpacity>
 
@@ -109,7 +119,7 @@ title:{
 
 
 description:{
-  marginTop:20,
+  marginTop:18,
   color:Colors.gray,
   fontSize:16,
   lineHeight:25,
@@ -117,27 +127,28 @@ description:{
 },
 
 
-warning:{
-  marginTop:40,
+infoBox:{
+  marginTop:35,
+  backgroundColor:Colors.card,
   padding:20,
-  backgroundColor:"#111111",
   borderRadius:Radius.medium,
   borderWidth:1,
-  borderColor:Colors.warning
+  borderColor:"#222"
 },
 
 
-warningTitle:{
-  color:Colors.warning,
+infoTitle:{
+  color:Colors.primary,
   fontSize:16,
   fontWeight:"700"
 },
 
 
-warningText:{
-  marginTop:8,
+infoText:{
+  marginTop:10,
   color:Colors.white,
-  fontSize:14
+  fontSize:14,
+  lineHeight:20
 },
 
 
