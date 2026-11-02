@@ -2,7 +2,7 @@ import {
 
 createSession,
 
-getSession,
+getSessions,
 
 disconnectSession
 
@@ -12,7 +12,7 @@ disconnectSession
 
 
 
-export function connectWalletConnect(
+export function connectApp(
 
 name:string,
 
@@ -29,6 +29,17 @@ url
 
 );
 
+}
+
+
+
+
+
+export function sessions(){
+
+
+return getSessions();
+
 
 }
 
@@ -36,22 +47,14 @@ url
 
 
 
-export function getWalletConnectSession(){
+export function disconnect(
+
+id:string
+
+){
 
 
-return getSession();
-
-
-}
-
-
-
-
-
-export function disconnectWalletConnect(){
-
-
-disconnectSession();
+return disconnectSession(id);
 
 
 }
