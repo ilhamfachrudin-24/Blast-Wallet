@@ -11,3 +11,5 @@ export * from "./secureStorage";
 export * from "./security";
 
 export * from "./keyManager";
+
+export * from "./vault";
