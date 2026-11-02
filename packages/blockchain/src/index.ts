@@ -31,3 +31,7 @@ export * from "./networkManager";
 export * from "./gas";
 
 export * from "./feeOptimizer";
+
+export * from "./rpc";
+
+export * from "./data";
