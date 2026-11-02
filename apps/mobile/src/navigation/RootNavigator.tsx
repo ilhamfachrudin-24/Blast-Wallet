@@ -8,7 +8,6 @@ createNativeStackNavigator
 } from "@react-navigation/native-stack";
 
 
-
 import LockScreen from "../screens/LockScreen";
 
 import SplashScreen from "../screens/SplashScreen";
@@ -23,6 +22,8 @@ import ImportWalletScreen from "../screens/ImportWalletScreen";
 
 import MainTabNavigator from "./MainTabNavigator";
 
+import TransactionHistoryScreen from "../screens/TransactionHistoryScreen";
+
 
 
 
@@ -36,7 +37,6 @@ createNativeStackNavigator();
 
 
 export default function RootNavigator(){
-
 
 
 return (
@@ -111,6 +111,15 @@ component={ImportWalletScreen}
 name="Main"
 
 component={MainTabNavigator}
+
+/>
+
+
+<Stack.Screen
+
+name="TransactionHistory"
+
+component={TransactionHistoryScreen}
 
 />
 
