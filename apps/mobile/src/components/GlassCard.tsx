@@ -46,23 +46,26 @@ return (
 
 
 
-const styles = StyleSheet.create({
+const styles=StyleSheet.create({
 
 card:{
 
 
 backgroundColor:Colors.card,
 
+
 borderRadius:Radius.large,
+
 
 padding:20,
 
+
 borderWidth:1,
 
-borderColor:Colors.border
+
+borderColor:"#222"
 
 
 }
-
 
 });
