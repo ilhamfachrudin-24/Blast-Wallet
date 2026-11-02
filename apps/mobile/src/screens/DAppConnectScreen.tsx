@@ -9,7 +9,9 @@ Text,
 
 TouchableOpacity,
 
-StyleSheet
+StyleSheet,
+
+Alert
 
 } from "react-native";
 
@@ -24,12 +26,11 @@ Radius
 } from "../theme/theme";
 
 
-
 import {
 
-connectApplication
+connectWalletConnect
 
-} from "../services/dappService";
+} from "../services/walletConnectService";
 
 
 
@@ -39,16 +40,29 @@ export default function DAppConnectScreen(){
 
 
 
+
+
 function handleConnect(){
+
 
 
 const session =
 
-connectApplication(
+connectWalletConnect(
 
-"Demo dApp",
+"Demo Web3 App",
 
 "https://example.com"
+
+);
+
+
+
+Alert.alert(
+
+"Connected",
+
+"Wallet connected successfully"
 
 );
 
@@ -57,8 +71,8 @@ connectApplication(
 console.log(session);
 
 
-}
 
+}
 
 
 
@@ -69,19 +83,20 @@ return (
 
 
 <Text style={styles.icon}>
-🌐
+🔗
 </Text>
 
 
 <Text style={styles.title}>
-Connect dApp
+WalletConnect
 </Text>
 
 
 <Text style={styles.subtitle}>
-Allow this application
-to connect with Blast Wallet
+Connect your Blast Wallet
+with Web3 applications
 </Text>
+
 
 
 
@@ -103,6 +118,7 @@ https://example.com
 
 
 
+
 <TouchableOpacity
 
 style={styles.button}
@@ -113,7 +129,7 @@ onPress={handleConnect}
 
 
 <Text style={styles.buttonText}>
-Connect Wallet
+Connect
 </Text>
 
 
@@ -179,7 +195,7 @@ fontSize:18
 
 
 url:{
-marginTop:10,
+marginTop:8,
 color:Colors.primary
 },
 
@@ -197,6 +213,5 @@ buttonText:{
 color:Colors.background,
 fontWeight:"700"
 }
-
 
 });
