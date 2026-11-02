@@ -1,12 +1,36 @@
-export function askBlastAI(
-question:string
-){
+export interface AIResponse {
+
+
+message:string;
+
+type:string;
+
+
+}
+
+
+
+
+export function askWalletAI(
+
+question:string,
+
+context:any
+
+):AIResponse{
+
 
 
 return {
 
-answer:
-`Blast AI response for: ${question}`
+
+type:"assistant",
+
+
+message:
+
+`Blast AI analyzed your wallet. Your question: ${question}`
+
 
 };
 
