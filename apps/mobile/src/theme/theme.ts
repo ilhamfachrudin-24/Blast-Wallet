@@ -5,67 +5,47 @@ background:"#050505",
 
 card:"#111111",
 
-cardLight:"#181818",
+primary:"#6C5CE7",
 
+success:"#00D084",
 
-primary:"#8B5CF6",
+danger:"#FF4757",
 
-secondary:"#22D3EE",
-
-
-success:"#22C55E",
-
-warning:"#F59E0B",
-
-danger:"#EF4444",
-
+warning:"#FFA502",
 
 white:"#FFFFFF",
 
-gray:"#9CA3AF",
-
-
-border:"#27272A"
+gray:"#888888"
 
 
 };
 
 
+
+export const Spacing = {
+
+
+small:8,
+
+medium:16,
+
+large:24,
+
+xl:32
+
+
+};
 
 
 
 export const Radius = {
 
 
-small:10,
+small:12,
 
-medium:18,
+medium:20,
 
-large:28
-
-
-};
-
-
-
-
-
-export const Shadows = {
-
-
-card:{
-
-
-shadowColor:"#000",
-
-shadowOpacity:0.25,
-
-shadowRadius:20,
-
-elevation:10
-
-
-}
+large:30
 
 
 };
