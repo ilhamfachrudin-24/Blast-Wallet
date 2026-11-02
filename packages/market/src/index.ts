@@ -1,3 +1,7 @@
+export * from "./market";
+
 export * from "./price";
 
-export * from "./watchlist";
+export * from "./priceAPI";
+
+export * from "./sync";
