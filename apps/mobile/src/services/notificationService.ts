@@ -1,8 +1,10 @@
 import {
 
-createNotification,
+getNotifications,
 
-getNotifications
+transactionAlert,
+
+securityAlert
 
 } from "@blast-wallet/notification";
 
@@ -10,14 +12,11 @@ getNotifications
 
 
 
-export function sendNotification(
-
-data:any
-
-){
+export function notifications(){
 
 
-return createNotification(data);
+return getNotifications();
+
 
 }
 
@@ -25,10 +24,30 @@ return createNotification(data);
 
 
 
-export function loadNotifications(){
+export function notifyTransaction(
+
+message:string
+
+){
 
 
-return getNotifications();
+return transactionAlert(message);
+
+
+}
+
+
+
+
+
+export function notifySecurity(
+
+message:string
+
+){
+
+
+return securityAlert(message);
 
 
 }
