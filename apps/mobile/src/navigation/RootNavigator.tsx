@@ -14,10 +14,10 @@ import WalletDashboardScreen from "../screens/WalletDashboardScreen";
 import AssetDetailScreen from "../screens/AssetDetailScreen";
 import SendTransactionScreen from "../screens/SendTransactionScreen";
 import ReceiveWalletScreen from "../screens/ReceiveWalletScreen";
+import AISecurityScreen from "../screens/AISecurityScreen";
 
 
 const Stack=createNativeStackNavigator();
-
 
 
 export default function RootNavigator(){
@@ -25,64 +25,33 @@ export default function RootNavigator(){
 return(
 
 <Stack.Navigator
+
 screenOptions={{
 headerShown:false
 }}
+
 >
 
 
-<Stack.Screen
-name="Splash"
-component={SplashScreen}
-/>
+<Stack.Screen name="Splash" component={SplashScreen}/>
 
+<Stack.Screen name="Welcome" component={WelcomeScreen}/>
 
-<Stack.Screen
-name="Welcome"
-component={WelcomeScreen}
-/>
+<Stack.Screen name="CreateWallet" component={CreateWalletScreen}/>
 
+<Stack.Screen name="RecoveryPhrase" component={RecoveryPhraseScreen}/>
 
-<Stack.Screen
-name="CreateWallet"
-component={CreateWalletScreen}
-/>
+<Stack.Screen name="ImportWallet" component={ImportWalletScreen}/>
 
+<Stack.Screen name="Dashboard" component={WalletDashboardScreen}/>
 
-<Stack.Screen
-name="RecoveryPhrase"
-component={RecoveryPhraseScreen}
-/>
+<Stack.Screen name="AssetDetail" component={AssetDetailScreen}/>
 
+<Stack.Screen name="SendTransaction" component={SendTransactionScreen}/>
 
-<Stack.Screen
-name="ImportWallet"
-component={ImportWalletScreen}
-/>
+<Stack.Screen name="ReceiveWallet" component={ReceiveWalletScreen}/>
 
-
-<Stack.Screen
-name="Dashboard"
-component={WalletDashboardScreen}
-/>
-
-
-<Stack.Screen
-name="AssetDetail"
-component={AssetDetailScreen}
-/>
-
-
-<Stack.Screen
-name="SendTransaction"
-component={SendTransactionScreen}
-/>
-
-
-<Stack.Screen
-name="ReceiveWallet"
-component={ReceiveWalletScreen}
-/>
+<Stack.Screen name="AISecurity" component={AISecurityScreen}/>
 
 
 </Stack.Navigator>
