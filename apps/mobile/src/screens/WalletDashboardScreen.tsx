@@ -1,29 +1,73 @@
-import React from "react";
+import React, {
+useEffect,
+useState
+} from "react";
+
 
 import {
+
 View,
+
 Text,
+
 StyleSheet
+
 } from "react-native";
 
 
 import {
+
 Colors,
+
 Radius
+
 } from "../theme/theme";
 
 
 import {
+
 getDashboardData
+
 } from "../services/dashboardService";
+
+
 
 
 
 export default function WalletDashboardScreen(){
 
 
-const data =
-getDashboardData();
+const [data,setData] =
+useState<any>(null);
+
+
+
+
+useEffect(()=>{
+
+
+async function load(){
+
+
+const result =
+
+await getDashboardData();
+
+
+setData(result);
+
+
+}
+
+
+
+load();
+
+
+
+},[]);
+
+
 
 
 
@@ -43,6 +87,7 @@ Blast Wallet
 
 
 
+
 <View style={styles.card}>
 
 
@@ -51,34 +96,13 @@ Wallet Address
 </Text>
 
 
-<Text style={styles.address}>
+<Text style={styles.value}>
+
 {
-data.wallet?.address ??
-"Generate Wallet First"
+data?.wallet?.address ??
+"Loading..."
 }
-</Text>
 
-
-</View>
-
-
-
-<View style={styles.card}>
-
-
-<Text style={styles.label}>
-AI Security Score
-</Text>
-
-
-<Text style={styles.score}>
-{
-data.security
-?
-"95 / 100"
-:
-"Unknown"
-}
 </Text>
 
 
@@ -91,18 +115,51 @@ data.security
 
 
 <Text style={styles.label}>
-Portfolio Status
+Solana Balance
 </Text>
 
 
-<Text style={styles.text}>
+<Text style={styles.balance}>
+
 {
-data.portfolio.recommendation
+data?.solBalance?.balance ??
+0
 }
+
+ SOL
+
 </Text>
 
 
 </View>
+
+
+
+
+
+<View style={styles.card}>
+
+
+<Text style={styles.label}>
+Ethereum Balance
+</Text>
+
+
+<Text style={styles.balance}>
+
+{
+data?.ethBalance?.balance ??
+0
+}
+
+ ETH
+
+</Text>
+
+
+</View>
+
+
 
 
 </View>
@@ -114,7 +171,8 @@ data.portfolio.recommendation
 
 
 
-const styles=StyleSheet.create({
+
+const styles = StyleSheet.create({
 
 container:{
 flex:1,
@@ -152,23 +210,17 @@ color:Colors.gray
 },
 
 
-address:{
-color:Colors.primary,
-marginTop:8
+value:{
+marginTop:10,
+color:Colors.primary
 },
 
 
-score:{
+balance:{
+marginTop:10,
 color:Colors.success,
-fontSize:30,
-fontWeight:"800",
-marginTop:8
-},
-
-
-text:{
-color:Colors.white,
-marginTop:8
+fontSize:24,
+fontWeight:"800"
 }
 
 
