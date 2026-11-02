@@ -1,25 +1,20 @@
-const words = [
+import {
+  generateMnemonic as bip39GenerateMnemonic,
+  validateMnemonic as bip39ValidateMnemonic
+} from "@scure/bip39";
 
-"apple",
-"river",
-"galaxy",
-"future",
-"crypto",
-"wallet",
-"secure",
-"block",
-"chain",
-"light",
-"node",
-"network"
 
-];
+import {
+  wordlist
+} from "@scure/bip39/wordlists/english";
 
 
 
 export function generateMnemonic(){
 
-  return words.join(" ");
+  return bip39GenerateMnemonic(
+    wordlist
+  );
 
 }
 
@@ -29,13 +24,9 @@ export function validateMnemonic(
 phrase:string
 ){
 
-  const count =
-  phrase.trim().split(" ").length;
-
-
-  return (
-    count === 12 ||
-    count === 24
+  return bip39ValidateMnemonic(
+    phrase,
+    wordlist
   );
 
 }
