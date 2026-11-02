@@ -13,6 +13,7 @@ import ImportWalletScreen from "../screens/ImportWalletScreen";
 import WalletDashboardScreen from "../screens/WalletDashboardScreen";
 import AssetDetailScreen from "../screens/AssetDetailScreen";
 import SendTransactionScreen from "../screens/SendTransactionScreen";
+import ReceiveWalletScreen from "../screens/ReceiveWalletScreen";
 
 
 const Stack=createNativeStackNavigator();
@@ -21,15 +22,12 @@ const Stack=createNativeStackNavigator();
 
 export default function RootNavigator(){
 
-
-return (
+return(
 
 <Stack.Navigator
-
 screenOptions={{
 headerShown:false
 }}
-
 >
 
 
@@ -78,6 +76,12 @@ component={AssetDetailScreen}
 <Stack.Screen
 name="SendTransaction"
 component={SendTransactionScreen}
+/>
+
+
+<Stack.Screen
+name="ReceiveWallet"
+component={ReceiveWalletScreen}
 />
 
 
