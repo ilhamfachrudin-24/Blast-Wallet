@@ -1,31 +1,48 @@
 {
   "name": "@blast-wallet/mobile",
+
   "version": "1.0.0",
+
   "private": true,
 
+
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start"
+
+    "android":"react-native run-android",
+
+    "ios":"react-native run-ios",
+
+    "start":"react-native start"
+
   },
+
 
   "dependencies": {
 
-    "react": "18.3.1",
 
-    "react-native": "0.76.0",
+    "react":"18.3.1",
 
-    "react-native-biometrics": "^3.0.1",
+    "react-native":"0.76.0",
 
-    "@blast-wallet/wallet-core": "workspace:*",
 
-    "@blast-wallet/blockchain": "workspace:*",
+    "@react-navigation/native":"^7.0.0",
 
-    "@blast-wallet/portfolio": "workspace:*",
+    "@react-navigation/native-stack":"^7.0.0",
 
-    "@blast-wallet/ai-engine": "workspace:*",
+    "@react-navigation/bottom-tabs":"^7.0.0",
 
-    "@blast-wallet/walletconnect": "workspace:*"
+
+    "@blast-wallet/wallet-core":"workspace:*",
+
+    "@blast-wallet/blockchain":"workspace:*",
+
+    "@blast-wallet/portfolio":"workspace:*",
+
+    "@blast-wallet/ai-engine":"workspace:*",
+
+    "@blast-wallet/defi":"workspace:*",
+
+    "@blast-wallet/walletconnect":"workspace:*"
 
   }
 
