@@ -1,7 +1,9 @@
-export * from "./swap";
-
-export * from "./staking";
-
 export * from "./lending";
 
+export * from "./yield";
+
+export * from "./swap";
+
 export * from "./router";
+
+export * from "./slippage";
