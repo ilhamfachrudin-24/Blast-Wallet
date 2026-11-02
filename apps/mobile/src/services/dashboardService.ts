@@ -28,27 +28,47 @@ getEthereumBalance
 } from "@blast-wallet/blockchain";
 
 
+import {
+
+scanTokens,
+
+calculatePortfolio
+
+} from "@blast-wallet/portfolio";
+
+
 
 
 
 export async function getDashboardData(){
 
 
-const wallet =
-
-loadWallet();
+const wallet = loadWallet();
 
 
 
 const security =
-
 getSecurityStatus();
+
+
+
+const tokens =
+
+scanTokens(
+
+wallet.address
+
+);
 
 
 
 const portfolio =
 
-analyzePortfolio([]);
+calculatePortfolio(
+
+tokens
+
+);
 
 
 
@@ -57,9 +77,6 @@ let solBalance = null;
 let ethBalance = null;
 
 
-
-
-if(wallet?.address){
 
 
 try{
@@ -75,16 +92,9 @@ wallet.address
 
 
 
-}catch(error){
+}catch(e){}
 
 
-console.log(
-"Solana balance error",
-error
-);
-
-
-}
 
 
 
@@ -101,19 +111,9 @@ wallet.address
 
 
 
-}catch(error){
+}catch(e){}
 
 
-console.log(
-"Ethereum balance error",
-error
-);
-
-
-}
-
-
-}
 
 
 
@@ -125,11 +125,13 @@ wallet,
 
 security,
 
-portfolio,
-
 solBalance,
 
-ethBalance
+ethBalance,
+
+tokens,
+
+portfolio
 
 
 };
