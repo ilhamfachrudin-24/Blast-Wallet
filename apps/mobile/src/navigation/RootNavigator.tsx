@@ -16,16 +16,17 @@ import SendTransactionScreen from "../screens/SendTransactionScreen";
 import ReceiveWalletScreen from "../screens/ReceiveWalletScreen";
 import AISecurityScreen from "../screens/AISecurityScreen";
 import SettingsScreen from "../screens/SettingsScreen";
+import DAppConnectScreen from "../screens/DAppConnectScreen";
 
 
-const Stack=createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 
 
 export default function RootNavigator(){
 
 
-return(
+return (
 
 <Stack.Navigator
 
@@ -36,27 +37,76 @@ headerShown:false
 >
 
 
-<Stack.Screen name="Splash" component={SplashScreen}/>
+<Stack.Screen
+name="Splash"
+component={SplashScreen}
+/>
 
-<Stack.Screen name="Welcome" component={WelcomeScreen}/>
 
-<Stack.Screen name="CreateWallet" component={CreateWalletScreen}/>
+<Stack.Screen
+name="Welcome"
+component={WelcomeScreen}
+/>
 
-<Stack.Screen name="RecoveryPhrase" component={RecoveryPhraseScreen}/>
 
-<Stack.Screen name="ImportWallet" component={ImportWalletScreen}/>
+<Stack.Screen
+name="CreateWallet"
+component={CreateWalletScreen}
+/>
 
-<Stack.Screen name="Dashboard" component={WalletDashboardScreen}/>
 
-<Stack.Screen name="AssetDetail" component={AssetDetailScreen}/>
+<Stack.Screen
+name="RecoveryPhrase"
+component={RecoveryPhraseScreen}
+/>
 
-<Stack.Screen name="SendTransaction" component={SendTransactionScreen}/>
 
-<Stack.Screen name="ReceiveWallet" component={ReceiveWalletScreen}/>
+<Stack.Screen
+name="ImportWallet"
+component={ImportWalletScreen}
+/>
 
-<Stack.Screen name="AISecurity" component={AISecurityScreen}/>
 
-<Stack.Screen name="Settings" component={SettingsScreen}/>
+<Stack.Screen
+name="Dashboard"
+component={WalletDashboardScreen}
+/>
+
+
+<Stack.Screen
+name="AssetDetail"
+component={AssetDetailScreen}
+/>
+
+
+<Stack.Screen
+name="SendTransaction"
+component={SendTransactionScreen}
+/>
+
+
+<Stack.Screen
+name="ReceiveWallet"
+component={ReceiveWalletScreen}
+/>
+
+
+<Stack.Screen
+name="AISecurity"
+component={AISecurityScreen}
+/>
+
+
+<Stack.Screen
+name="Settings"
+component={SettingsScreen}
+/>
+
+
+<Stack.Screen
+name="DAppConnect"
+component={DAppConnectScreen}
+/>
 
 
 </Stack.Navigator>
