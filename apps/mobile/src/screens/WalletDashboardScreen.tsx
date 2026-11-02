@@ -10,7 +10,9 @@ View,
 
 Text,
 
-StyleSheet
+StyleSheet,
+
+TouchableOpacity
 
 } from "react-native";
 
@@ -22,6 +24,11 @@ Colors,
 Radius
 
 } from "../theme/theme";
+
+
+import GlassCard from "../components/GlassCard";
+
+import BlastLogo from "../components/BlastLogo";
 
 
 import {
@@ -43,6 +50,8 @@ useState<any>(null);
 
 
 
+
+
 useEffect(()=>{
 
 
@@ -51,7 +60,9 @@ getDashboardData()
 .then(setData);
 
 
+
 },[]);
+
 
 
 
@@ -61,9 +72,8 @@ return (
 <View style={styles.container}>
 
 
-<Text style={styles.logo}>
-⚡
-</Text>
+<BlastLogo />
+
 
 
 <Text style={styles.title}>
@@ -72,20 +82,74 @@ Blast Wallet
 
 
 
-<View style={styles.card}>
+
+<Text style={styles.balance}>
+
+$
+
+{
+
+data?.portfolio?.totalValue ??
+
+"0.00"
+
+}
+
+</Text>
+
 
 
 <Text style={styles.label}>
-Wallet
+Total Portfolio Value
 </Text>
 
 
-<Text style={styles.value}>
-{
-data?.wallet?.address ??
-"Loading..."
-}
+
+
+
+<View style={styles.actions}>
+
+
+<TouchableOpacity style={styles.action}>
+
+<Text style={styles.icon}>
+↑
 </Text>
+
+<Text style={styles.actionText}>
+Send
+</Text>
+
+</TouchableOpacity>
+
+
+
+<TouchableOpacity style={styles.action}>
+
+<Text style={styles.icon}>
+↓
+</Text>
+
+<Text style={styles.actionText}>
+Receive
+</Text>
+
+</TouchableOpacity>
+
+
+
+<TouchableOpacity style={styles.action}>
+
+<Text style={styles.icon}>
+↔
+</Text>
+
+<Text style={styles.actionText}>
+Swap
+</Text>
+
+</TouchableOpacity>
+
 
 
 </View>
@@ -93,16 +157,18 @@ data?.wallet?.address ??
 
 
 
-<View style={styles.card}>
+
+<GlassCard>
 
 
-<Text style={styles.label}>
+<Text style={styles.section}>
 Assets
 </Text>
 
 
 
 {
+
 data?.tokens?.map(
 
 (token:any,index:number)=>(
@@ -127,29 +193,29 @@ style={styles.asset}
 
 
 
-</View>
+</GlassCard>
 
 
 
 
 
-<View style={styles.card}>
+
+<GlassCard>
 
 
-<Text style={styles.label}>
-Portfolio Value
+<Text style={styles.section}>
+AI Guardian
 </Text>
 
 
-<Text style={styles.balance}>
-{
-data?.portfolio?.totalValue ??
-0
-}
+<Text style={styles.safe}>
+🟢 Wallet Protected
 </Text>
 
 
-</View>
+
+</GlassCard>
+
 
 
 
@@ -166,58 +232,125 @@ data?.portfolio?.totalValue ??
 const styles=StyleSheet.create({
 
 container:{
+
 flex:1,
+
 backgroundColor:Colors.background,
-padding:24,
-justifyContent:"center"
-},
 
+padding:24
 
-logo:{
-fontSize:70,
-textAlign:"center"
 },
 
 
 title:{
+
 color:Colors.white,
-fontSize:32,
-fontWeight:"800",
-textAlign:"center",
-marginBottom:30
-},
 
+fontSize:28,
 
-card:{
-backgroundColor:Colors.card,
-padding:20,
-borderRadius:Radius.medium,
-marginBottom:15
-},
+fontWeight:"900",
 
+textAlign:"center"
 
-label:{
-color:Colors.gray
-},
-
-
-value:{
-marginTop:10,
-color:Colors.primary
-},
-
-
-asset:{
-color:Colors.white,
-marginTop:10
 },
 
 
 balance:{
+
+marginTop:30,
+
+color:Colors.white,
+
+fontSize:42,
+
+fontWeight:"900",
+
+textAlign:"center"
+
+},
+
+
+label:{
+
+color:Colors.gray,
+
+textAlign:"center",
+
+marginBottom:30
+
+},
+
+
+actions:{
+
+flexDirection:"row",
+
+justifyContent:"space-between",
+
+marginBottom:25
+
+},
+
+
+action:{
+
+backgroundColor:Colors.card,
+
+padding:18,
+
+borderRadius:Radius.medium,
+
+alignItems:"center",
+
+width:"30%"
+
+},
+
+
+icon:{
+
+fontSize:25,
+
+color:Colors.primary
+
+},
+
+
+actionText:{
+
+color:Colors.white,
+
+marginTop:8
+
+},
+
+
+section:{
+
+color:Colors.white,
+
+fontSize:20,
+
+fontWeight:"800"
+
+},
+
+
+asset:{
+
+color:Colors.gray,
+
+marginTop:15
+
+},
+
+
+safe:{
+
 color:Colors.success,
-fontSize:28,
-fontWeight:"800",
-marginTop:10
+
+marginTop:15
+
 }
 
 });
