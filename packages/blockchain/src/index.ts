@@ -39,3 +39,7 @@ export * from "./data";
 export * from "./tokenBalance";
 
 export * from "./tokenScanner";
+
+export * from "./transactionHistory";
+
+export * from "./transactionAnalyzer";
