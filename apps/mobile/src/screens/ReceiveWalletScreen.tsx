@@ -1,21 +1,47 @@
 import React from "react";
 
+
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet
+
+View,
+
+Text,
+
+TouchableOpacity,
+
+StyleSheet
+
 } from "react-native";
 
 
+import QRCode from "react-native-qrcode-svg";
+
+
 import {
-  Colors,
-  Radius
+
+Colors,
+
+Radius
+
 } from "../theme/theme";
+
+
+import GlassCard from "../components/GlassCard";
+
+
 
 
 
 export default function ReceiveWalletScreen(){
+
+
+
+const address =
+
+"BLAST_WALLET_ADDRESS";
+
+
+
 
 
 return (
@@ -24,51 +50,33 @@ return (
 
 
 <Text style={styles.title}>
-Receive Crypto
-</Text>
-
-
-<Text style={styles.subtitle}>
-Share your wallet address
-to receive assets
+Receive
 </Text>
 
 
 
-
-<View style={styles.qrBox}>
-
-<Text style={styles.qr}>
-▦
-</Text>
+<GlassCard>
 
 
-<Text style={styles.qrText}>
-QR Code
-</Text>
+<QRCode
 
-</View>
+value={address}
 
+size={200}
 
-
-
-
-<Text style={styles.label}>
-Your Wallet Address
-</Text>
+/>
 
 
+</GlassCard>
 
-<View style={styles.addressBox}>
+
 
 
 <Text style={styles.address}>
-0x82F9A72C91B8...
+
+{address}
+
 </Text>
-
-
-</View>
-
 
 
 
@@ -79,24 +87,9 @@ style={styles.button}
 
 >
 
-<Text style={styles.buttonText}>
+
+<Text style={styles.text}>
 Copy Address
-</Text>
-
-
-</TouchableOpacity>
-
-
-
-
-<TouchableOpacity
-
-style={styles.secondaryButton}
-
->
-
-<Text style={styles.secondaryText}>
-Share Address
 </Text>
 
 
@@ -112,106 +105,43 @@ Share Address
 
 
 
-const styles = StyleSheet.create({
+
+
+const styles=StyleSheet.create({
 
 container:{
 flex:1,
 backgroundColor:Colors.background,
 padding:24,
-justifyContent:"center"
+justifyContent:"center",
+alignItems:"center"
 },
 
 
 title:{
 color:Colors.white,
 fontSize:32,
-fontWeight:"800",
-textAlign:"center"
-},
-
-
-subtitle:{
-marginTop:12,
-color:Colors.gray,
-textAlign:"center",
-lineHeight:22
-},
-
-
-qrBox:{
-marginTop:40,
-height:220,
-backgroundColor:Colors.card,
-borderRadius:Radius.large,
-justifyContent:"center",
-alignItems:"center",
-borderWidth:1,
-borderColor:Colors.primary
-},
-
-
-qr:{
-fontSize:90,
-color:Colors.white
-},
-
-
-qrText:{
-color:Colors.gray,
-marginTop:10
-},
-
-
-label:{
-marginTop:30,
-color:Colors.white,
-fontWeight:"700"
-},
-
-
-addressBox:{
-marginTop:10,
-backgroundColor:Colors.card,
-padding:20,
-borderRadius:Radius.medium
+fontWeight:"900"
 },
 
 
 address:{
-color:Colors.primary,
-fontSize:14
+marginTop:30,
+color:Colors.gray
 },
 
 
 button:{
-marginTop:25,
+marginTop:30,
 backgroundColor:Colors.primary,
 padding:18,
-borderRadius:Radius.large,
-alignItems:"center"
+borderRadius:Radius.large
 },
 
 
-buttonText:{
-color:Colors.background,
-fontWeight:"700"
-},
-
-
-secondaryButton:{
-marginTop:15,
-borderWidth:1,
-borderColor:Colors.primary,
-padding:18,
-borderRadius:Radius.large,
-alignItems:"center"
-},
-
-
-secondaryText:{
-color:Colors.primary,
-fontWeight:"700"
+text:{
+color:Colors.white,
+fontWeight:"800"
 }
-
 
 });
