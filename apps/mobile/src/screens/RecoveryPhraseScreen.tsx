@@ -15,6 +15,7 @@ import {
 
 export default function RecoveryPhraseScreen({navigation}: any) {
 
+
   const words = [
     "apple",
     "river",
@@ -43,7 +44,7 @@ export default function RecoveryPhraseScreen({navigation}: any) {
 
       <Text style={styles.description}>
         Write these words down and
-        keep them somewhere safe.
+        store them securely.
       </Text>
 
 
@@ -79,8 +80,7 @@ export default function RecoveryPhraseScreen({navigation}: any) {
 
         <Text style={styles.warningText}>
           ⚠ Never share your recovery phrase.
-          Anyone with these words can access
-          your wallet.
+          Blast Wallet will never ask for it.
         </Text>
 
       </View>
@@ -91,12 +91,14 @@ export default function RecoveryPhraseScreen({navigation}: any) {
 
         style={styles.button}
 
-        onPress={()=>navigation.navigate("VerifyPhrase")}
+        onPress={() =>
+          navigation.navigate("Dashboard")
+        }
 
       >
 
         <Text style={styles.buttonText}>
-          I Saved My Phrase
+          Continue To Wallet
         </Text>
 
       </TouchableOpacity>
@@ -131,8 +133,7 @@ title:{
 description:{
   marginTop:12,
   color:Colors.gray,
-  textAlign:"center",
-  fontSize:16
+  textAlign:"center"
 },
 
 
@@ -149,9 +150,7 @@ wordBox:{
   backgroundColor:Colors.card,
   padding:12,
   marginBottom:12,
-  borderRadius:Radius.small,
-  borderWidth:1,
-  borderColor:"#222"
+  borderRadius:Radius.small
 },
 
 
@@ -169,10 +168,10 @@ word:{
 
 
 warning:{
-  marginTop:20,
-  padding:16,
-  borderRadius:Radius.medium,
+  marginTop:15,
+  padding:15,
   backgroundColor:"#1A1200",
+  borderRadius:Radius.medium,
   borderWidth:1,
   borderColor:Colors.warning
 },
@@ -180,7 +179,6 @@ warning:{
 
 warningText:{
   color:Colors.warning,
-  fontSize:14,
   lineHeight:20
 },
 
