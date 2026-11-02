@@ -1,62 +1,70 @@
 import {
-  generateMnemonic
+generateMnemonic
 } from "./mnemonic";
+
+
+import {
+generateKeyPair,
+createAddress
+} from "./keyManager";
 
 
 
 export interface Wallet {
 
-  mnemonic: string[];
 
-  privateKey: string;
+mnemonic:string[];
 
-  publicKey: string;
+privateKey:string;
 
-  address: string;
+publicKey:string;
 
-}
-
-
-
-export function createWallet(): Wallet {
-
-
-  const mnemonic = generateMnemonic();
-
-
-  const privateKey =
-    "PRIVATE_KEY_GENERATED";
-
-
-  const publicKey =
-    "PUBLIC_KEY_GENERATED";
-
-
-  const address =
-    "BLAST_WALLET_ADDRESS";
-
-
-  return {
-
-    mnemonic,
-
-    privateKey,
-
-    publicKey,
-
-    address
-
-  };
+address:string;
 
 
 }
 
 
 
-export function getAddress(
-wallet:Wallet
-){
 
-  return wallet.address;
+export function createWallet()
+:Wallet{
+
+
+const mnemonic =
+generateMnemonic();
+
+
+
+const keys =
+generateKeyPair();
+
+
+
+const address =
+createAddress(
+keys.publicKey
+);
+
+
+
+return {
+
+
+mnemonic,
+
+privateKey:
+keys.privateKey,
+
+
+publicKey:
+keys.publicKey,
+
+
+address
+
+
+};
+
 
 }
