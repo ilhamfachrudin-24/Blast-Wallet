@@ -1,361 +1,174 @@
 import React from "react";
 
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  StyleSheet
+View,
+Text,
+StyleSheet
 } from "react-native";
 
 
 import {
-  Colors,
-  Radius
+Colors,
+Radius
 } from "../theme/theme";
+
+
+import {
+getDashboardData
+} from "../services/dashboardService";
 
 
 
 export default function WalletDashboardScreen(){
 
-  return (
 
-    <View style={styles.container}>
+const data =
+getDashboardData();
 
 
-      <ScrollView>
 
+return (
 
-        <View style={styles.header}>
+<View style={styles.container}>
 
-          <Text style={styles.logo}>
-            ⚡
-          </Text>
 
+<Text style={styles.logo}>
+⚡
+</Text>
 
-          <View>
 
-            <Text style={styles.walletName}>
-              Blast Wallet
-            </Text>
+<Text style={styles.title}>
+Blast Wallet
+</Text>
 
-            <Text style={styles.address}>
-              0x82F9...A91B
-            </Text>
 
-          </View>
 
+<View style={styles.card}>
 
-        </View>
 
+<Text style={styles.label}>
+Wallet Address
+</Text>
 
 
-        <View style={styles.balanceCard}>
+<Text style={styles.address}>
+{
+data.wallet?.address ??
+"Generate Wallet First"
+}
+</Text>
 
 
-          <Text style={styles.balanceLabel}>
-            Total Balance
-          </Text>
+</View>
 
 
-          <Text style={styles.balance}>
-            $25,430.50
-          </Text>
 
+<View style={styles.card}>
 
-          <Text style={styles.change}>
-            +3.24% Today
-          </Text>
 
+<Text style={styles.label}>
+AI Security Score
+</Text>
 
-        </View>
 
+<Text style={styles.score}>
+{
+data.security
+?
+"95 / 100"
+:
+"Unknown"
+}
+</Text>
 
 
-        <View style={styles.actions}>
+</View>
 
 
-          <TouchableOpacity style={styles.actionButton}>
 
-            <Text style={styles.actionIcon}>
-              ↑
-            </Text>
 
-            <Text style={styles.actionText}>
-              Send
-            </Text>
+<View style={styles.card}>
 
-          </TouchableOpacity>
 
+<Text style={styles.label}>
+Portfolio Status
+</Text>
 
 
-          <TouchableOpacity style={styles.actionButton}>
+<Text style={styles.text}>
+{
+data.portfolio.recommendation
+}
+</Text>
 
-            <Text style={styles.actionIcon}>
-              ↓
-            </Text>
 
-            <Text style={styles.actionText}>
-              Receive
-            </Text>
+</View>
 
-          </TouchableOpacity>
 
+</View>
 
-
-          <TouchableOpacity style={styles.actionButton}>
-
-            <Text style={styles.actionIcon}>
-              🔄
-            </Text>
-
-            <Text style={styles.actionText}>
-              Swap
-            </Text>
-
-          </TouchableOpacity>
-
-
-        </View>
-
-
-
-
-        <Text style={styles.sectionTitle}>
-          Assets
-        </Text>
-
-
-
-        <View style={styles.assetCard}>
-
-
-          <Text style={styles.assetIcon}>
-            ◎
-          </Text>
-
-
-          <View>
-
-            <Text style={styles.assetName}>
-              Solana
-            </Text>
-
-
-            <Text style={styles.assetBalance}>
-              12.50 SOL
-            </Text>
-
-          </View>
-
-
-          <Text style={styles.assetPrice}>
-            $2,000
-          </Text>
-
-
-        </View>
-
-
-
-
-        <View style={styles.securityCard}>
-
-
-          <Text style={styles.securityTitle}>
-            🛡 AI Security Score
-          </Text>
-
-
-          <Text style={styles.securityScore}>
-            95 / 100
-          </Text>
-
-
-          <Text style={styles.securityText}>
-            Wallet protection status: Excellent
-          </Text>
-
-
-        </View>
-
-
-
-      </ScrollView>
-
-
-    </View>
-
-  );
+);
 
 }
 
 
 
 
-const styles = StyleSheet.create({
+const styles=StyleSheet.create({
 
 container:{
-  flex:1,
-  backgroundColor:Colors.background,
-  padding:24
-},
-
-
-header:{
-  flexDirection:"row",
-  alignItems:"center",
-  marginTop:20
+flex:1,
+backgroundColor:Colors.background,
+padding:24,
+justifyContent:"center"
 },
 
 
 logo:{
-  fontSize:45,
-  marginRight:15
+fontSize:70,
+textAlign:"center"
 },
 
 
-walletName:{
-  color:Colors.white,
-  fontSize:20,
-  fontWeight:"700"
+title:{
+color:Colors.white,
+fontSize:32,
+fontWeight:"800",
+textAlign:"center",
+marginBottom:30
+},
+
+
+card:{
+backgroundColor:Colors.card,
+padding:20,
+borderRadius:Radius.medium,
+marginBottom:15
+},
+
+
+label:{
+color:Colors.gray
 },
 
 
 address:{
-  color:Colors.gray,
-  marginTop:4
+color:Colors.primary,
+marginTop:8
 },
 
 
-balanceCard:{
-  marginTop:30,
-  backgroundColor:Colors.card,
-  padding:25,
-  borderRadius:Radius.large,
-  borderWidth:1,
-  borderColor:Colors.primary
+score:{
+color:Colors.success,
+fontSize:30,
+fontWeight:"800",
+marginTop:8
 },
 
 
-balanceLabel:{
-  color:Colors.gray
-},
-
-
-balance:{
-  color:Colors.white,
-  fontSize:36,
-  fontWeight:"800",
-  marginTop:10
-},
-
-
-change:{
-  color:Colors.success,
-  marginTop:10
-},
-
-
-actions:{
-  flexDirection:"row",
-  justifyContent:"space-between",
-  marginTop:25
-},
-
-
-actionButton:{
-  width:"31%",
-  backgroundColor:Colors.card,
-  padding:15,
-  borderRadius:Radius.medium,
-  alignItems:"center"
-},
-
-
-actionIcon:{
-  color:Colors.primary,
-  fontSize:24
-},
-
-
-actionText:{
-  color:Colors.white,
-  marginTop:8
-},
-
-
-sectionTitle:{
-  color:Colors.white,
-  fontSize:22,
-  fontWeight:"700",
-  marginTop:35
-},
-
-
-assetCard:{
-  marginTop:15,
-  backgroundColor:Colors.card,
-  padding:18,
-  borderRadius:Radius.medium,
-  flexDirection:"row",
-  alignItems:"center"
-},
-
-
-assetIcon:{
-  fontSize:30,
-  color:Colors.primary,
-  marginRight:15
-},
-
-
-assetName:{
-  color:Colors.white,
-  fontWeight:"700"
-},
-
-
-assetBalance:{
-  color:Colors.gray,
-  marginTop:5
-},
-
-
-assetPrice:{
-  marginLeft:"auto",
-  color:Colors.white
-},
-
-
-securityCard:{
-  marginTop:25,
-  backgroundColor:"#101820",
-  padding:20,
-  borderRadius:Radius.medium,
-  borderWidth:1,
-  borderColor:Colors.secondary
-},
-
-
-securityTitle:{
-  color:Colors.white,
-  fontSize:16,
-  fontWeight:"700"
-},
-
-
-securityScore:{
-  color:Colors.primary,
-  fontSize:32,
-  fontWeight:"800",
-  marginTop:10
-},
-
-
-securityText:{
-  color:Colors.gray,
-  marginTop:5
+text:{
+color:Colors.white,
+marginTop:8
 }
 
 
