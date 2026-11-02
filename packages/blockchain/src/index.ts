@@ -35,3 +35,7 @@ export * from "./feeOptimizer";
 export * from "./rpc";
 
 export * from "./data";
+
+export * from "./tokenBalance";
+
+export * from "./tokenScanner";
