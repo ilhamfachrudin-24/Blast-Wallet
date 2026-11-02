@@ -1,57 +1,35 @@
 import {
 
-connectDApp,
+getDApps,
 
-disconnectDApp,
+favoriteDApp
 
-getSession
-
-} from "@blast-wallet/dapp-connector";
+} from "@blast-wallet/dapp";
 
 
 
 
 
-export function connectApplication(
+export function discoverDApps(){
 
-name:string,
 
-url:string
+return getDApps();
+
+
+}
+
+
+
+
+
+export function saveFavorite(
+
+name:string
 
 ){
 
 
-return connectDApp(
-
-name,
-
-url
-
-);
-
-
-}
-
-
-
-
-
-export function currentSession(){
-
-
-return getSession();
-
-
-}
-
-
-
-
-
-export function disconnectApplication(){
-
-
-disconnectDApp();
+return favoriteDApp(name);
 
 
 }
