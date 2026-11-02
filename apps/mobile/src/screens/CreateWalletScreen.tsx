@@ -1,171 +1,169 @@
 import React from "react";
 
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet
+View,
+Text,
+TouchableOpacity,
+StyleSheet
 } from "react-native";
 
 
 import {
-  Colors,
-  Radius
+Colors,
+Radius
 } from "../theme/theme";
 
 
-
-export default function CreateWalletScreen({navigation}: any){
-
-
-  return (
-
-    <View style={styles.container}>
-
-
-      <Text style={styles.icon}>
-        🔐
-      </Text>
-
-
-      <Text style={styles.title}>
-        Create New Wallet
-      </Text>
-
-
-      <Text style={styles.description}>
-
-        Generate your secure
-        self-custody wallet.
-
-        {"\n\n"}
-
-        You will receive a recovery
-        phrase to protect your assets.
-
-      </Text>
+import {
+generateNewWallet
+} from "../services/walletService";
 
 
 
-      <View style={styles.infoBox}>
+export default function CreateWalletScreen({navigation}:any){
 
 
-        <Text style={styles.infoTitle}>
-          Your wallet, your control
-        </Text>
+function handleCreateWallet(){
 
 
-        <Text style={styles.infoText}>
-          Blast Wallet does not store
-          your private keys or recovery
-          phrase.
-        </Text>
+ const wallet = generateNewWallet();
 
 
-      </View>
+ console.log(wallet);
 
 
+ navigation.navigate("RecoveryPhrase");
 
-      <TouchableOpacity
-
-        style={styles.button}
-
-        onPress={() =>
-          navigation.navigate("RecoveryPhrase")
-        }
-
-      >
-
-        <Text style={styles.buttonText}>
-          Generate Wallet
-        </Text>
-
-
-      </TouchableOpacity>
-
-
-
-    </View>
-
-  );
 
 }
 
 
 
-const styles = StyleSheet.create({
+return(
+
+<View style={styles.container}>
+
+
+<Text style={styles.icon}>
+🔐
+</Text>
+
+
+<Text style={styles.title}>
+Create New Wallet
+</Text>
+
+
+<Text style={styles.description}>
+
+Generate your secure
+self-custody wallet.
+
+</Text>
+
+
+
+<View style={styles.infoBox}>
+
+
+<Text style={styles.infoTitle}>
+Your wallet, your control
+</Text>
+
+
+<Text style={styles.infoText}>
+Your private keys stay with you.
+Blast Wallet never controls your funds.
+</Text>
+
+
+</View>
+
+
+
+
+<TouchableOpacity
+
+style={styles.button}
+
+onPress={handleCreateWallet}
+
+>
+
+
+<Text style={styles.buttonText}>
+Generate Wallet
+</Text>
+
+
+</TouchableOpacity>
+
+
+
+</View>
+
+)
+
+}
+
+
+
+const styles=StyleSheet.create({
 
 container:{
-  flex:1,
-  backgroundColor:Colors.background,
-  padding:24,
-  justifyContent:"center"
+flex:1,
+backgroundColor:Colors.background,
+padding:24,
+justifyContent:"center"
 },
-
 
 icon:{
-  fontSize:72,
-  textAlign:"center"
+fontSize:72,
+textAlign:"center"
 },
-
 
 title:{
-  marginTop:30,
-  color:Colors.white,
-  fontSize:30,
-  fontWeight:"800",
-  textAlign:"center"
+marginTop:30,
+color:Colors.white,
+fontSize:30,
+fontWeight:"800",
+textAlign:"center"
 },
-
 
 description:{
-  marginTop:18,
-  color:Colors.gray,
-  fontSize:16,
-  lineHeight:25,
-  textAlign:"center"
+marginTop:15,
+color:Colors.gray,
+textAlign:"center"
 },
-
 
 infoBox:{
-  marginTop:35,
-  backgroundColor:Colors.card,
-  padding:20,
-  borderRadius:Radius.medium,
-  borderWidth:1,
-  borderColor:"#222"
+marginTop:35,
+backgroundColor:Colors.card,
+padding:20,
+borderRadius:Radius.medium
 },
-
 
 infoTitle:{
-  color:Colors.primary,
-  fontSize:16,
-  fontWeight:"700"
+color:Colors.primary,
+fontWeight:"700"
 },
-
 
 infoText:{
-  marginTop:10,
-  color:Colors.white,
-  fontSize:14,
-  lineHeight:20
+marginTop:10,
+color:Colors.white
 },
-
 
 button:{
-  marginTop:40,
-  backgroundColor:Colors.primary,
-  padding:18,
-  borderRadius:Radius.large,
-  alignItems:"center"
+marginTop:40,
+backgroundColor:Colors.primary,
+padding:18,
+borderRadius:Radius.large,
+alignItems:"center"
 },
 
-
 buttonText:{
-  color:Colors.background,
-  fontSize:16,
-  fontWeight:"700"
+color:Colors.background,
+fontWeight:"700"
 }
-
 
 });
