@@ -1,8 +1,19 @@
+import {
+sha256
+} from "@noble/hashes/sha256";
+
+
+import {
+utf8ToBytes
+} from "@noble/hashes/utils";
+
+
+
 export interface KeyPair {
 
-  privateKey:string;
+privateKey:string;
 
-  publicKey:string;
+publicKey:string;
 
 }
 
@@ -12,12 +23,24 @@ export function generateKeyPair()
 :KeyPair{
 
 
+const seed =
+sha256(
+utf8ToBytes(
+Date.now().toString()
+)
+);
+
+
+
 const privateKey =
-"generated_private_key";
+Buffer.from(seed)
+.toString("hex");
+
 
 
 const publicKey =
-"generated_public_key";
+sha256(seed)
+.toString();
 
 
 
@@ -39,6 +62,8 @@ publicKey:string
 ){
 
 
-return `blast_${publicKey}`;
+return "blast_" +
+publicKey.slice(0,32);
+
 
 }
