@@ -1,9 +1,17 @@
 {
-  "name": "@blast-wallet/defi",
+  "name":"blast-wallet",
 
-  "version": "1.0.0",
+  "version":"1.0.0",
 
-  "private": true,
+  "private":true,
 
-  "main":"src/index.ts"
+
+  "workspaces":[
+
+    "apps/*",
+
+    "packages/*"
+
+  ]
+
 }
