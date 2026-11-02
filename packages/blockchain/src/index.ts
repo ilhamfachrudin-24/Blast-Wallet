@@ -25,3 +25,5 @@ export * from "./broadcast";
 export * from "./history";
 
 export * from "./explorer";
+
+export * from "./networkManager";
