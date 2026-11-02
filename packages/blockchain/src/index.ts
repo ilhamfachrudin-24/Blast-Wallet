@@ -21,3 +21,5 @@ export * from "./balance";
 export * from "./builder";
 
 export * from "./broadcast";
+
+export * from "./history";
