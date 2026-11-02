@@ -1,28 +1,41 @@
+const words = [
+
+"apple",
+"river",
+"galaxy",
+"future",
+"crypto",
+"wallet",
+"secure",
+"block",
+"chain",
+"light",
+"node",
+"network"
+
+];
+
+
+
 export function generateMnemonic(){
 
-  return [
-    "apple",
-    "river",
-    "galaxy",
-    "future",
-    "crypto",
-    "wallet",
-    "secure",
-    "block",
-    "chain",
-    "light",
-    "node",
-    "network"
-  ];
+  return words.join(" ");
 
 }
 
 
 
 export function validateMnemonic(
-  words:string[]
+phrase:string
 ){
 
-  return words.length === 12;
+  const count =
+  phrase.trim().split(" ").length;
+
+
+  return (
+    count === 12 ||
+    count === 24
+  );
 
 }
