@@ -1,4 +1,6 @@
-import React from "react";
+import React,{
+useState
+} from "react";
 
 
 import {
@@ -6,6 +8,8 @@ import {
 View,
 
 Text,
+
+TouchableOpacity,
 
 StyleSheet
 
@@ -19,10 +23,56 @@ Colors
 } from "../theme/theme";
 
 
+import {
+
+createWalletTransaction
+
+} from "../services/transactionService";
+
+
 
 
 
 export default function TransactionConfirmScreen(){
+
+
+const [status,setStatus]=
+
+useState("");
+
+
+
+
+
+function confirm(){
+
+
+const result =
+
+createWalletTransaction({
+
+from:"wallet",
+
+to:"receiver",
+
+amount:1,
+
+asset:"SOL"
+
+});
+
+
+
+setStatus(
+
+result.status
+
+);
+
+
+}
+
+
 
 
 
@@ -37,12 +87,32 @@ Confirm Transaction
 
 
 <Text style={styles.text}>
-AI Guardian checked this transaction.
+AI Guardian Protection Active
 </Text>
 
 
-<Text style={styles.safe}>
-Risk Level: SAFE
+
+<TouchableOpacity
+
+style={styles.button}
+
+onPress={confirm}
+
+>
+
+
+<Text style={styles.btnText}>
+Sign Transaction
+</Text>
+
+
+</TouchableOpacity>
+
+
+
+
+<Text style={styles.result}>
+{status}
 </Text>
 
 
@@ -80,10 +150,23 @@ color:Colors.gray
 },
 
 
-safe:{
-marginTop:20,
-color:Colors.success,
+button:{
+marginTop:30,
+backgroundColor:Colors.primary,
+padding:18,
+borderRadius:20
+},
+
+
+btnText:{
+color:Colors.white,
 fontWeight:"800"
+},
+
+
+result:{
+marginTop:20,
+color:Colors.success
 }
 
 });
