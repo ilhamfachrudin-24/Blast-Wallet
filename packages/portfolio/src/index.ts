@@ -11,3 +11,7 @@ export * from "./nft";
 export * from "./analytics";
 
 export * from "./allocation";
+
+export * from "./nftGallery";
+
+export * from "./nftMetadata";
