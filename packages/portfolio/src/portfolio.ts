@@ -5,10 +5,17 @@ Token
 } from "./scanner";
 
 
+import {
+
+getTokenPrice
+
+} from "./price";
 
 
 
-export function calculatePortfolio(
+
+
+export async function calculatePortfolio(
 
 tokens:Token[]
 
@@ -16,27 +23,69 @@ tokens:Token[]
 
 
 
-let total = 0;
+let totalValue = 0;
 
 
 
-tokens.forEach(token=>{
+const assets = await Promise.all(
+
+tokens.map(async(token)=>{
 
 
-total += token.balance;
+const price =
+
+await getTokenPrice(
+
+token.symbol
+
+);
 
 
-});
+
+const value =
+
+token.balance *
+
+price.price;
+
+
+
+totalValue += value;
 
 
 
 return {
 
 
-assets:tokens,
+...token,
 
 
-totalValue:total
+price:
+
+price.price,
+
+
+value
+
+
+};
+
+
+})
+
+
+);
+
+
+
+
+return {
+
+
+assets,
+
+
+totalValue
 
 
 };
