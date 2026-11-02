@@ -2,8 +2,10 @@
   "name": "@blast-wallet/wallet-core",
   "version": "1.0.0",
   "private": true,
+
   "main": "src/index.ts",
-  "dependencies": {
-    "typescript": "^5.6.0"
+
+  "scripts": {
+    "build": "tsc"
   }
 }
