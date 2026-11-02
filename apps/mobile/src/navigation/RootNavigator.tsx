@@ -1,7 +1,7 @@
 import React from "react";
 
 import {
-  createNativeStackNavigator
+createNativeStackNavigator
 } from "@react-navigation/native-stack";
 
 
@@ -11,14 +11,15 @@ import CreateWalletScreen from "../screens/CreateWalletScreen";
 import RecoveryPhraseScreen from "../screens/RecoveryPhraseScreen";
 import ImportWalletScreen from "../screens/ImportWalletScreen";
 import WalletDashboardScreen from "../screens/WalletDashboardScreen";
+import AssetDetailScreen from "../screens/AssetDetailScreen";
 
 
-const Stack = createNativeStackNavigator();
+const Stack=createNativeStackNavigator();
 
 
 export default function RootNavigator(){
 
-return (
+return(
 
 <Stack.Navigator
 
@@ -65,8 +66,14 @@ component={WalletDashboardScreen}
 />
 
 
+<Stack.Screen
+name="AssetDetail"
+component={AssetDetailScreen}
+/>
+
+
 </Stack.Navigator>
 
-);
+)
 
 }
