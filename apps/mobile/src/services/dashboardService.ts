@@ -14,22 +14,6 @@ getSecurityStatus
 
 import {
 
-analyzePortfolio
-
-} from "@blast-wallet/ai-engine";
-
-
-import {
-
-getSolanaBalance,
-
-getEthereumBalance
-
-} from "@blast-wallet/blockchain";
-
-
-import {
-
 scanTokens,
 
 calculatePortfolio
@@ -43,12 +27,8 @@ calculatePortfolio
 export async function getDashboardData(){
 
 
-const wallet = loadWallet();
-
-
-
-const security =
-getSecurityStatus();
+const wallet =
+loadWallet();
 
 
 
@@ -64,57 +44,11 @@ wallet.address
 
 const portfolio =
 
-calculatePortfolio(
+await calculatePortfolio(
 
 tokens
 
 );
-
-
-
-let solBalance = null;
-
-let ethBalance = null;
-
-
-
-
-try{
-
-
-solBalance =
-
-await getSolanaBalance(
-
-wallet.address
-
-);
-
-
-
-}catch(e){}
-
-
-
-
-
-try{
-
-
-ethBalance =
-
-await getEthereumBalance(
-
-wallet.address
-
-);
-
-
-
-}catch(e){}
-
-
-
 
 
 
@@ -123,15 +57,16 @@ return {
 
 wallet,
 
-security,
-
-solBalance,
-
-ethBalance,
 
 tokens,
 
-portfolio
+
+portfolio,
+
+
+security:
+
+getSecurityStatus()
 
 
 };
