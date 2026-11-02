@@ -15,22 +15,17 @@
 
     "react-native": "0.76.0",
 
-    "@react-navigation/native": "^7.0.0",
-
-    "@react-navigation/native-stack": "^7.0.0",
-
-    "react-native-safe-area-context": "^4.12.0",
-
+    "react-native-biometrics": "^3.0.1",
 
     "@blast-wallet/wallet-core": "workspace:*",
 
     "@blast-wallet/blockchain": "workspace:*",
 
-    "@blast-wallet/dapp-connector": "workspace:*",
+    "@blast-wallet/portfolio": "workspace:*",
 
     "@blast-wallet/ai-engine": "workspace:*",
 
-    "@blast-wallet/portfolio": "workspace:*"
+    "@blast-wallet/walletconnect": "workspace:*"
 
   }
 
