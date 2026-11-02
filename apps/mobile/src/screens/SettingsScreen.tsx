@@ -1,38 +1,100 @@
-import React from "react";
+import React,{
+useEffect,
+useState
+} from "react";
+
 
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet
+
+View,
+
+Text,
+
+TouchableOpacity,
+
+StyleSheet
+
 } from "react-native";
 
 
 import {
-  Colors,
-  Radius
+
+Colors
+
 } from "../theme/theme";
+
+
+import {
+
+settings,
+
+saveSettings
+
+} from "../services/settingsService";
+
+
 
 
 
 export default function SettingsScreen(){
 
 
-const items = [
 
-"🔐 Security",
+const [data,setData]=
 
-"👆 Biometric Lock",
+useState<any>(null);
 
-"💾 Backup Wallet",
 
-"🌐 Connected dApps",
 
-"⛓ Network",
 
-"ℹ About Blast Wallet"
 
-];
+useEffect(()=>{
+
+
+setData(
+
+settings()
+
+);
+
+
+},[]);
+
+
+
+
+
+function toggleTheme(){
+
+
+
+const result=
+
+saveSettings({
+
+theme:
+
+data.theme==="dark"
+
+?
+
+"light"
+
+:
+
+"dark"
+
+});
+
+
+
+setData(result);
+
+
+}
+
+
+
 
 
 return (
@@ -46,46 +108,41 @@ Settings
 
 
 
-<View style={styles.card}>
+<Text style={styles.item}>
+Theme: {data?.theme}
+</Text>
 
 
-{
-items.map((item,index)=>(
+
+<Text style={styles.item}>
+Currency: {data?.currency}
+</Text>
+
+
+
+<Text style={styles.item}>
+Language: {data?.language}
+</Text>
+
+
 
 
 <TouchableOpacity
 
-key={index}
+style={styles.button}
 
-style={styles.item}
+onPress={toggleTheme}
 
 >
 
 
-<Text style={styles.itemText}>
-{item}
-</Text>
-
-
-<Text style={styles.arrow}>
-›
+<Text style={styles.text}>
+Change Theme
 </Text>
 
 
 </TouchableOpacity>
 
-
-))
-}
-
-
-</View>
-
-
-
-<Text style={styles.version}>
-Blast Wallet v1.0.0
-</Text>
 
 
 </View>
@@ -96,59 +153,42 @@ Blast Wallet v1.0.0
 
 
 
-const styles = StyleSheet.create({
+
+
+const styles=StyleSheet.create({
 
 container:{
 flex:1,
 backgroundColor:Colors.background,
-padding:24
+padding:24,
+justifyContent:"center"
 },
 
 
 title:{
-marginTop:40,
 color:Colors.white,
 fontSize:32,
-fontWeight:"800"
-},
-
-
-card:{
-marginTop:30,
-backgroundColor:Colors.card,
-borderRadius:Radius.large,
-padding:10
+fontWeight:"900"
 },
 
 
 item:{
-height:60,
-flexDirection:"row",
-alignItems:"center",
-justifyContent:"space-between",
-paddingHorizontal:15,
-borderBottomWidth:1,
-borderBottomColor:"#222"
-},
-
-
-itemText:{
 color:Colors.white,
-fontSize:16
+marginTop:20
 },
 
 
-arrow:{
-color:Colors.gray,
-fontSize:30
+button:{
+marginTop:30,
+backgroundColor:Colors.primary,
+padding:18,
+borderRadius:20
 },
 
 
-version:{
-marginTop:40,
-textAlign:"center",
-color:Colors.gray
+text:{
+color:Colors.white,
+textAlign:"center"
 }
-
 
 });
