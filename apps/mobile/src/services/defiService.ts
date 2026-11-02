@@ -2,6 +2,8 @@ import {
 
 executeSwap,
 
+getSwapQuote,
+
 stakeAsset,
 
 supplyAsset
@@ -12,18 +14,43 @@ supplyAsset
 
 
 
-export function swapToken(data:any){
+export function getQuote(data:any){
 
-return executeSwap(data);
+
+return getSwapQuote(
+
+data.fromToken,
+
+data.toToken,
+
+data.amount
+
+);
+
 
 }
 
 
 
 
+
+export function swapToken(data:any){
+
+
+return executeSwap(data);
+
+
+}
+
+
+
+
+
 export function stakeToken(data:any){
 
+
 return stakeAsset(data);
+
 
 }
 
@@ -33,6 +60,8 @@ return stakeAsset(data);
 
 export function lendToken(data:any){
 
+
 return supplyAsset(data);
+
 
 }
