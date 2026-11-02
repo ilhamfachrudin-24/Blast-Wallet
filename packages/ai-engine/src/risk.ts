@@ -22,7 +22,7 @@ score:95,
 level:"SAFE",
 
 message:
-"Transaction looks secure"
+"Transaction verified by Blast AI Guardian"
 
 };
 
