@@ -1,6 +1,8 @@
 import {
 
-getTransactionHistory
+getTransactions,
+
+addTransaction
 
 } from "@blast-wallet/blockchain";
 
@@ -8,10 +10,26 @@ getTransactionHistory
 
 
 
-export function loadHistory(){
+export function transactionHistory(){
 
 
-return getTransactionHistory();
+return getTransactions();
+
+
+}
+
+
+
+
+
+export function saveTransaction(
+
+data:any
+
+){
+
+
+return addTransaction(data);
 
 
 }
