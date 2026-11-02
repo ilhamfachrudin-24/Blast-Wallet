@@ -2,7 +2,9 @@ import {
 
 buildTransaction,
 
-signTransaction
+signTransaction,
+
+broadcastTransaction
 
 } from "@blast-wallet/blockchain";
 
@@ -17,7 +19,7 @@ analyzeTransactionRisk
 
 
 
-export function createWalletTransaction(
+export async function sendTransaction(
 
 data:any
 
@@ -80,13 +82,29 @@ transaction,
 
 
 
+const broadcast =
+
+await broadcastTransaction(
+
+signed.raw
+
+);
+
+
+
+
+
 return {
 
 
-status:"signed",
+status:
+
+broadcast.status,
 
 
-transaction:signed,
+hash:
+
+broadcast.txHash,
 
 
 security
