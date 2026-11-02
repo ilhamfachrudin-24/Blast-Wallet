@@ -9,3 +9,5 @@ export * from "./storage";
 export * from "./secureStorage";
 
 export * from "./security";
+
+export * from "./keyManager";
