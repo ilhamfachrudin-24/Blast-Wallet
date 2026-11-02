@@ -15,12 +15,15 @@ import AssetDetailScreen from "../screens/AssetDetailScreen";
 import SendTransactionScreen from "../screens/SendTransactionScreen";
 import ReceiveWalletScreen from "../screens/ReceiveWalletScreen";
 import AISecurityScreen from "../screens/AISecurityScreen";
+import SettingsScreen from "../screens/SettingsScreen";
 
 
 const Stack=createNativeStackNavigator();
 
 
+
 export default function RootNavigator(){
+
 
 return(
 
@@ -52,6 +55,8 @@ headerShown:false
 <Stack.Screen name="ReceiveWallet" component={ReceiveWalletScreen}/>
 
 <Stack.Screen name="AISecurity" component={AISecurityScreen}/>
+
+<Stack.Screen name="Settings" component={SettingsScreen}/>
 
 
 </Stack.Navigator>
