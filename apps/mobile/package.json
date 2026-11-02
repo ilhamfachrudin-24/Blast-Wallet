@@ -28,7 +28,9 @@
 
     "@blast-wallet/dapp-connector": "workspace:*",
 
-    "@blast-wallet/ai-engine": "workspace:*"
+    "@blast-wallet/ai-engine": "workspace:*",
+
+    "@blast-wallet/portfolio": "workspace:*"
 
   }
 
