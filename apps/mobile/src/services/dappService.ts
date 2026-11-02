@@ -1,19 +1,21 @@
 import {
 
-getDApps,
+getPositions,
 
-favoriteDApp
+addPosition,
 
-} from "@blast-wallet/dapp";
+getAPY
 
-
-
-
-
-export function discoverDApps(){
+} from "@blast-wallet/defi";
 
 
-return getDApps();
+
+
+
+export function positions(){
+
+
+return getPositions();
 
 
 }
@@ -22,14 +24,30 @@ return getDApps();
 
 
 
-export function saveFavorite(
+export function deposit(
+
+data:any
+
+){
+
+
+return addPosition(data);
+
+
+}
+
+
+
+
+
+export function protocolAPY(
 
 name:string
 
 ){
 
 
-return favoriteDApp(name);
+return getAPY(name);
 
 
 }
