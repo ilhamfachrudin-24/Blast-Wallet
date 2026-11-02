@@ -1,66 +1,71 @@
 export const Colors = {
-  background: "#050505",
 
-  primary: "#00D9FF",
 
-  secondary: "#8B5CF6",
+background:"#050505",
 
-  accent: "#FFD700",
+card:"#111111",
 
-  success: "#22C55E",
+cardLight:"#181818",
 
-  warning: "#F59E0B",
 
-  danger: "#EF4444",
+primary:"#8B5CF6",
 
-  white: "#FFFFFF",
+secondary:"#22D3EE",
 
-  gray: "#A1A1AA",
 
-  card: "#111111"
+success:"#22C55E",
+
+warning:"#F59E0B",
+
+danger:"#EF4444",
+
+
+white:"#FFFFFF",
+
+gray:"#9CA3AF",
+
+
+border:"#27272A"
+
+
 };
 
 
-export const Typography = {
-  display: {
-    fontSize: 42,
-    fontWeight: "800"
-  },
 
-  heading: {
-    fontSize: 28,
-    fontWeight: "700"
-  },
-
-  title: {
-    fontSize: 20,
-    fontWeight: "600"
-  },
-
-  body: {
-    fontSize: 16,
-    fontWeight: "400"
-  },
-
-  caption: {
-    fontSize: 13,
-    fontWeight: "400"
-  }
-};
-
-
-export const Spacing = {
-  xs: 4,
-  sm: 8,
-  md: 16,
-  lg: 24,
-  xl: 32,
-  xxl: 48
-};
 
 
 export const Radius = {
-  small: 12,
-  medium: 20,
-  large: 32
+
+
+small:10,
+
+medium:18,
+
+large:28
+
+
+};
+
+
+
+
+
+export const Shadows = {
+
+
+card:{
+
+
+shadowColor:"#000",
+
+shadowOpacity:0.25,
+
+shadowRadius:20,
+
+elevation:10
+
+
+}
+
+
 };
