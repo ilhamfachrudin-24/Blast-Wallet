@@ -1,28 +1,89 @@
-export interface RiskResult {
+export interface RiskReport {
+
 
 score:number;
 
 level:string;
 
-message:string;
+warnings:string[];
+
 
 }
 
 
 
-export function analyzeTransaction(
-transaction:any
-):RiskResult{
+
+
+export function analyzeRisk(
+
+token:any
+
+):RiskReport{
+
+
+
+let score = 50;
+
+
+const warnings:string[]=[];
+
+
+
+if(!token.liquidity){
+
+
+score -=20;
+
+
+warnings.push(
+
+"Low liquidity detected"
+
+);
+
+
+}
+
+
+
+if(!token.contractVerified){
+
+
+score -=20;
+
+
+warnings.push(
+
+"Contract verification missing"
+
+);
+
+
+}
+
+
+
 
 
 return {
 
-score:95,
 
-level:"SAFE",
+score,
 
-message:
-"Transaction verified by Blast AI Guardian"
+
+level:
+
+score >=70 ?
+
+"Low Risk"
+
+:
+
+"High Risk",
+
+
+warnings
+
 
 };
 
