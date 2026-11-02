@@ -1,4 +1,4 @@
-import React, {
+import React,{
 useEffect,
 useState
 } from "react";
@@ -37,36 +37,21 @@ getDashboardData
 export default function WalletDashboardScreen(){
 
 
-const [data,setData] =
-useState<any>(null);
+const [data,setData]=
 
+useState<any>(null);
 
 
 
 useEffect(()=>{
 
 
-async function load(){
+getDashboardData()
 
-
-const result =
-
-await getDashboardData();
-
-
-setData(result);
-
-
-}
-
-
-
-load();
-
+.then(setData);
 
 
 },[]);
-
 
 
 
@@ -87,22 +72,19 @@ Blast Wallet
 
 
 
-
 <View style={styles.card}>
 
 
 <Text style={styles.label}>
-Wallet Address
+Wallet
 </Text>
 
 
 <Text style={styles.value}>
-
 {
 data?.wallet?.address ??
 "Loading..."
 }
-
 </Text>
 
 
@@ -115,20 +97,34 @@ data?.wallet?.address ??
 
 
 <Text style={styles.label}>
-Solana Balance
+Assets
 </Text>
 
 
-<Text style={styles.balance}>
 
 {
-data?.solBalance?.balance ??
-0
-}
+data?.tokens?.map(
 
- SOL
+(token:any,index:number)=>(
+
+<Text
+
+key={index}
+
+style={styles.asset}
+
+>
+
+{token.symbol}
 
 </Text>
+
+)
+
+)
+
+}
+
 
 
 </View>
@@ -141,24 +137,19 @@ data?.solBalance?.balance ??
 
 
 <Text style={styles.label}>
-Ethereum Balance
+Portfolio Value
 </Text>
 
 
 <Text style={styles.balance}>
-
 {
-data?.ethBalance?.balance ??
+data?.portfolio?.totalValue ??
 0
 }
-
- ETH
-
 </Text>
 
 
 </View>
-
 
 
 
@@ -172,7 +163,7 @@ data?.ethBalance?.balance ??
 
 
 
-const styles = StyleSheet.create({
+const styles=StyleSheet.create({
 
 container:{
 flex:1,
@@ -216,12 +207,17 @@ color:Colors.primary
 },
 
 
-balance:{
-marginTop:10,
-color:Colors.success,
-fontSize:24,
-fontWeight:"800"
-}
+asset:{
+color:Colors.white,
+marginTop:10
+},
 
+
+balance:{
+color:Colors.success,
+fontSize:28,
+fontWeight:"800",
+marginTop:10
+}
 
 });
