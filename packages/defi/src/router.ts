@@ -1,52 +1,41 @@
-export interface RouteQuote {
+export interface SwapRoute {
 
 
-fromToken:string;
+dex:string;
 
-toToken:string;
+path:string[];
 
-amount:number;
 
-estimatedOutput:number;
-
-provider:string;
 
 
 }
 
 
 
-export function getSwapQuote(
 
-fromToken:string,
 
-toToken:string,
+export function findRoute(
 
-amount:number
+from:string,
 
-):RouteQuote{
+to:string
+
+):SwapRoute{
 
 
 return {
 
 
-fromToken,
+dex:"Jupiter / Uniswap Router",
 
 
-toToken,
+path:[
 
+from,
 
-amount,
+to
 
-
-estimatedOutput:
-
-amount * 0.99,
-
-
-provider:
-
-"Blast Swap Router"
+]
 
 
 };
