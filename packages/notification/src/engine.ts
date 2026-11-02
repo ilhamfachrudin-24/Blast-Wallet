@@ -3,11 +3,11 @@ export interface Notification {
 
 id:string;
 
-type:string;
-
 title:string;
 
 message:string;
+
+type:string;
 
 createdAt:number;
 
@@ -16,7 +16,9 @@ createdAt:number;
 
 
 
-let notifications:Notification[] = [];
+
+
+let notifications:Notification[]=[];
 
 
 
@@ -24,32 +26,16 @@ let notifications:Notification[] = [];
 
 export function createNotification(
 
-data:Omit<Notification,"id"|"createdAt">
+data:Notification
 
 ){
 
 
-const notification = {
+notifications.push(data);
 
 
-id:Date.now().toString(),
+return data;
 
-
-createdAt:Date.now(),
-
-
-...data
-
-
-};
-
-
-
-notifications.push(notification);
-
-
-
-return notification;
 
 }
 
@@ -61,18 +47,6 @@ export function getNotifications(){
 
 
 return notifications;
-
-
-}
-
-
-
-
-
-export function clearNotifications(){
-
-
-notifications=[];
 
 
 }
