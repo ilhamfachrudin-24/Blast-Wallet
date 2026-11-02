@@ -13,7 +13,7 @@ createAddress
 export interface Wallet {
 
 
-mnemonic:string[];
+mnemonic:string;
 
 privateKey:string;
 
@@ -52,6 +52,7 @@ return {
 
 
 mnemonic,
+
 
 privateKey:
 keys.privateKey,
